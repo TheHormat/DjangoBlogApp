@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Şəxsi Kabinet</h3>
+<hr>
+<p>
+    Xoş Gəldin, <small>{{request.user.username}}</small>
+</p>
+<hr>
+<a class = "btn btn-danger" href = "{% url 'article:addarticle' %}">Məqalə Yaz </a>
+<hr>
+{% if articles %}
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Başlıq</th>
+            <th scope="col">Yazar</th>
+            <th scope="col">Taxri</th>
+            <th scope="col">Güncəllə</th>
+            <th scope="col">Sil</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for article in articles %}
+          <tr>
+            <td><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></td>
+            <td>{{article.author.username}}</td>
+            <td>{{article.created_date}}</td>
+            <td><a href="{% url 'article:update' article.id %}" class = "btn btn-danger">Güncəllə</a></td>
+            <td><a href="{% url 'article:delete' article.id %}" class = "btn btn-danger">Sil</a> </td>
+              
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+{% else %}
+
+<div class = "alert alert-danger">
+  Hələki bir məqaləniz yoxdur ...
+</div>
+{% endif %}
+
+
+
+{% endblock body %}
+

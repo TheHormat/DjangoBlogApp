@@ -1,0 +1,40 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'index'  %}">Blog</a>
+        
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'about'  %}">Haqqımızda</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'article:articles'  %}">Məqalələr</a>
+            </li>
+            
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'article:dashboard'  %}">Şəxsi Kabinet</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:logout'  %}">Çıkış Et</a>
+          </li>
+          {% else %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:login'  %}">Giriş Et</a>
+          </li>
+          {% endif %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:register'  %}">Qeydiyatdan Keç</a>
+          </li>
+          
+          </ul>
+        </div>
+    
+    
+</nav>

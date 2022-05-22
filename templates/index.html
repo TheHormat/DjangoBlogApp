@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div style="border: 1px solid black; background-color:white;" class="jumbotron text-center">
+        <h3>Blog Saytına Xoş Gəldiniz</h3>
+        <p>Bu saytda öz fikirlərinizi paylaşaraq kiməsə kömək etmiş olarsınız və ya kiminsə məqaləsini oxuyaraq nəsə qazanmış olarsınız.</p>
+</div>
+
+
+<center style="color:black; font-size:20px;">
+        {% if request.user.is_authenticated %}
+                Giriş Edilib, {{request.user.username}}
+        {% else %}
+                Giriş Edilməyib
+        {% endif %}
+
+</center>
+{% endblock body %}
+
